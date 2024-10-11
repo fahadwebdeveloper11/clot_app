@@ -33,7 +33,10 @@ const SignUp = () => {
               password: '',
               confirmPassword: '',
             }}
-            onSubmit={handleSignUp}>
+            onSubmit={(values, {resetForm} ) => {
+              handleSignUp(values);
+              resetForm();
+            }}>
             {({
               handleChange,
               handleBlur,
@@ -82,10 +85,7 @@ const SignUp = () => {
                 />
 
                 <Button
-                  onPress={() => {
-                    handleSubmit();
-                    handleReset();
-                  }}
+                  onPress={handleSubmit}
                   text="Continue"
                   disabled={!isValid}
                   containerStyle={{marginTop: 12,marginBottom: 20}}
